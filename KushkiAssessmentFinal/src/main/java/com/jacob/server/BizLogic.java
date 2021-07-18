@@ -4,6 +4,17 @@ import com.jacob.simpleGambling.Gambler;
 
 public class BizLogic {
 
+	/*
+	* Class for biz logc. Clase para ejecución de negocio por parte del server<br> 
+	*
+	* @author FUTURE KUSHKI ENGINEER
+	*         Jacob Orellana<br>
+	*         jacobore@hotmail.com<br>
+	* 
+	* @date 18/07/2021
+	* @version 1.0
+	*/
+	
 	public void serverSideLogic(Gambler g) {
 
 		/*
@@ -17,6 +28,7 @@ public class BizLogic {
 		 * pero en este caso la probabilidad de repetir la ronda aumenta al 60%.
 		 */
 
+		// valido las posibilidades
 		if (g.getCreditos() == 0) {
 			System.out.println("BIZ: no tiene creditos");
 			return;

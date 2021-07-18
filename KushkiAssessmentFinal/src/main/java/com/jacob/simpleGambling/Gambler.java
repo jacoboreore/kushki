@@ -2,6 +2,18 @@ package com.jacob.simpleGambling;
 
 import java.util.Random;
 
+/*
+* Class para sesión con datos de usuario. 
+* Contiene el valor de cada imagen a ser presentada 
+*
+* @author FUTURE KUSHKI ENGINEER
+*         Jacob Orellana<br>
+*         jacobore@hotmail.com<br>
+* 
+* @date 18/07/2021
+* @version 1.0
+*/
+
 public class Gambler {
 
 	private Integer block1 = 5;
@@ -49,6 +61,7 @@ public class Gambler {
 		this.creditos = creditos;
 	}
 
+	// Encuentra una imagen random
 	public void randShot() {
 		Random rand = new Random();
 
@@ -57,6 +70,8 @@ public class Gambler {
 		block3 = rand.nextInt(4);
 	}
 
+	
+	// Identifica si el user gana y le da creditos
 	public boolean isGana() {
 		if (block1 == block2 && block1 == block3) {
 			creditos += 40;
@@ -72,6 +87,8 @@ public class Gambler {
 		this.gana = gana;
 	}
 
+	// Ejecuta logica con posibilidades
+	
 	public void ejecutarConPosibilidad(int posibilidad) {
 		Random rand = new Random();
 		
@@ -86,11 +103,10 @@ public class Gambler {
 			block2 = block1;
 			block3 = rand.nextInt(4);
 		}
-
-		
-		
 	}
 
+	
+	// para pruebas unitarias
 	public String getCasoEjecutado() {
 		if (creditos < 40) {
 			System.out.println("BIZ: a random shot");
