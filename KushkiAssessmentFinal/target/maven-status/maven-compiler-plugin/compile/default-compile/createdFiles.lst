@@ -1,0 +1,4 @@
+com\jacob\simpleGambling\WebController.class
+com\jacob\server\BizLogic.class
+com\jacob\simpleGambling\Gambler.class
+com\jacob\simpleGambling\ValidatingFormInputApplication.class

@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="site-head">
+<!-- Custom site CSS styles -->
+<link rel="stylesheet" href="../public/css/styles.css"
+	th:href="@{/css/styles.css}" />
+
+<!-- 
+	<script src="../public/js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+-->
+<!-- Custom site scripts  -->
+<script src="../public/js/blog-scripts.js"
+	th:src="@{/js/blog-scripts.js}"></script>
+
+</head>
+
+<body>
+
+	<form id="adminDataForm" th:object="${gambler}" action="#"
+		th:action="@{/bizLogic}" method="post" onsubmit="return sendData()">
+
+		<div>
+			<label class="">TUS CREDITOS:</label> <input id="creditos"
+				type="text" th:field="*{creditos}" readonly="readonly" />
+		</div>
+		<div>
+			<input id="b1" type="text" th:field="*{block1}" readonly="readonly"
+				hidden="true" />
+		</div>
+		<div>
+			<input id="b2" type="text" th:field="*{block2}" readonly="readonly"
+				hidden="true" />
+		</div>
+		<div>
+			<input id="b3" type="text" th:field="*{block3}" readonly="readonly"
+				hidden="true" />
+		</div>
+		<div class="main"></div>
+
+		<table>
+			<tr>
+
+				<td><img id="img1" th:src="@{${'/img/img5.jpg'}}" width="120"
+					height="120" />
+				<td><img id="img2" th:src="@{${'/img/img5.jpg'}}" width="120"
+					height="120" />
+				<td><img id="img3" th:src="@{${'/img/img5.jpg'}}" width="120"
+					height="120" />
+			</tr>
+			<tr>
+				<td><button type="submit" name="action" value="lanzar">LANZAR</button></td>
+			</tr>
+			<tr>
+				<td></td>
+
+			</tr>
+		</table>
+
+	</form>
+	<script type="text/javascript"
+		src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script>
+		function sendData() {
+			return true;
+		}
+
+		window.addEventListener("load", function() {
+			$.ajax({
+				type : "GET",
+				data : $("#adminDataForm").serialize(),
+				cache : false,
+				url : "/mensajeEspera",
+				success : function(data) {
+					// $("#creditos").attr('hidden', 'true');
+					$("#img1").attr('src', '/img/img5.jpg');
+					$("#img2").attr('src', '/img/img5.jpg');
+					$("#img3").attr('src', '/img/img5.jpg');
+				},
+				error : function() {
+					alert("Error - Data not saved");
+				}
+
+			});
+
+			$.ajax({
+				type : "GET",
+				data : $("#adminDataForm").serialize(),
+				cache : false,
+				url : "/uno",
+				success : function(data) {
+					$("#img1").attr('src', data);
+				},
+				error : function() {
+					alert("Error - Data not saved");
+				}
+
+			});
+
+			$.ajax({
+				type : "GET",
+				data : $("#adminDataForm").serialize(),
+				cache : false,
+				url : "/dos",
+				success : function(data) {
+					$("#img2").attr('src', data);
+				},
+				error : function() {
+					alert("Error - Data not saved");
+				}
+
+			});
+
+			$.ajax({
+				type : "GET",
+				data : $("#adminDataForm").serialize(),
+				cache : false,
+				url : "/tres",
+				success : function(data) {
+					$("#img3").attr('src', data);
+					// $("#creditos").attr('hidden', 'false');
+				},
+				error : function() {
+					alert("Error - Data not saved");
+				}
+
+			});
+
+		});
+	</script>
+
+	<h1>Welcome</h1>
+	<p>Welcome to the Assessment to KUSHKI, gambling.</p>
+	<footer th:fragment="site-footer">&copy; JACOB ORELLANA REAL</footer>
+
+</body>
+</html>
